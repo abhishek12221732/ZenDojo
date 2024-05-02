@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>Zen Dojo - Martial Arts Website</title>
+  <meta name="title" content="Zen Dojo - Martial Arts Website">
+  <meta name="description" content="This is a Martial Arts Website">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - bootstrap link 
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/pattern-2.svg">
+  <link rel="preload" as="image" href="./assets/images/pattern-3.svg">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/ZenDojo.png" width="119" height="37" alt="Wren logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="./assets/images/ZenDojo.png" width="119" height="37" alt="Wren logo">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#home" class="navbar-link hover-1" data-nav-toggler>Home</a>
+          </li>
+
+          <li>
+            <a href="selector.html" class="navbar-link hover-1" data-nav-toggler>Find Yours</a>
+          </li>
+
+          <li>
+            <a href="#featured" class="navbar-link hover-1" data-nav-toggler>Videos</a>
+          </li>
+
+          <li>
+            <a href="#recent" class="navbar-link hover-1" data-nav-toggler>Why Learn ?</a>
+          </li>
+
+          <li>
+            <a href="all.html" class="navbar-link hover-1" data-nav-toggler>All Techniques</a>
+          </li>
+
+        </ul>
+
+
+
+        <p class="copyright-text">
+          Copyright 2024 © ZenDojo - Martial Arts Website.
+          Developed by Abhishek
+        </p>
+
+      </nav>
+
+      <a href="register.html" class="btn btn-primary">Register</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero" id="home" aria-label="home">
+        <div class="container">
+
+          <div class="hero-content">
+
+            
+
+            <h1 class="headline headline-1 section-title">
+              Martial Arts<p class="hero-subtitle">with</p><span class="span">ZenDojo</span>
+            </h1>
+
+            <p class="hero-text">
+              ZenDojo is a website where you can learn some of the most well known techniques of martial arts with a curated catalogue of techniques.
+            </p>
+
+            
+              <a href="selector.html">
+              <button class="btn btn-primary">
+                <span class="span">Get Started</span>
+              </button>
+            </a>
+
+          
+
+          </div>
+
+          <div class="hero-banner">
+
+            <img src="./assets/images/martial-arts1.png" width="327" height="490" alt="Wren Clark" class="w-100">
+
+            <img src="./assets/images/pattern-2.svg" width="27" height="26" alt="shape" class="shape shape-1">
+
+            <img src="./assets/images/pattern-3.svg" width="27" height="26" alt="shape" class="shape shape-2">
+
+          </div>
+<!-- 
+          <img src="./assets/images/shadow-1.svg" width="500" height="800" alt="" class="hero-bg hero-bg-1">
+
+          <img src="./assets/images/shadow-2.svg" width="500" height="500" alt="" class="hero-bg hero-bg-2"> -->
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #TOPICS
+      -->
+
+      <section class="topics" id="topics" aria-labelledby="topic-label">
+        <div class="container">
+
+          <div class="card topic-card">
+
+            <div class="card-content">
+
+              <h2 class="headline headline-2 section-title card-title" id="topic-label">
+                Best Techniques to learn
+              </h2>
+
+              <p class="card-text">
+                Don't miss out on the most well known technique of martial arts...
+              </p>
+
+              <div class="btn-group">
+                <button class="btn-icon" aria-label="previous" data-slider-prev>
+                  <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                </button>
+
+                <button class="btn-icon" aria-label="next" data-slider-next>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </div>
+
+            </div>
+
+            <div class="slider" data-slider>
+              <ul class="slider-list" data-slider-container>
+
+                <li class="slider-item">
+                  <a href="page_karate.html" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="./assets/images/karate.jpg" width="507" height="618" loading="lazy" alt="Karate"
+                        class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">Karate</span>
+
+                      <p class="slider-subtitle">38 Lessons</p>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="slider-item">
+                  <a href="page_taekwondo.html" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="./assets/images/taekwondo.jpg" width="507" height="618" loading="lazy" alt="Taekwondo"
+                        class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">Taekwondo</span>
+
+                      <p class="slider-subtitle">63 Lessons</p>
+                    </div>
+
+                  </a>
+                </li>
+
+                <li class="slider-item">
+                  <a href="page_judo.html" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="./assets/images/judo.jpg" width="507" height="618" loading="lazy" alt="Judo"
+                        class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">Judo</span>
+
+                      <p class="slider-subtitle">78 Lessons</p>
+                    </div>
+
+                  </a>
+                </li>
+
+                <li class="slider-item">
+                  <a href="page_muay_thai.html" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="./assets/images/muay_thai.jpg" width="507" height="618" loading="lazy" alt="Muay Thai"
+                        class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">Muay Thai</span>
+
+                      <p class="slider-subtitle">125 lessons</p>
+                    </div>
+
+                  </a>
+                </li>
+
+                <li class="slider-item">
+                  <a href="page_kung_fu.html" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="./assets/images/kung_fu.jpg" width="507" height="618" loading="lazy" alt="Kung Fu"
+                        class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">Kung Fu</span>
+
+                      <p class="slider-subtitle">78 Kung Fu</p>
+                    </div>
+
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #FEATURED POST
+      -->
+
+      <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+
+          <h2 class="headline headline-2 section-title">
+            <span class="span">Video Catalogue</span>
+          </h2>
+
+          <p class="section-text">
+            See the best videos on martial arts made by the experts.
+          </p>
+
+          <ul class="feature-list">
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="./assets/images/image-1.jpg" width="100%"  loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#Martial Arts</a>
+
+                      <a href="#" class="span hover-2">#Best</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 mins</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="https://www.youtube.com/watch?v=gyaLBY6WDQc&list=PLmU-PUWFq0ne9XsdLLmnfjiz93MfIkh-Z&index=1" class="card-title hover-2">
+                      What Martial Arts should I learn ?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+
+                    
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="./assets/images/image-2.jpg" width="100%" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#Martial Arts</a>
+
+                      <a href="#" class="span hover-2">#Nutrition</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">7 mins</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="https://www.youtube.com/watch?v=5Y1fgi7UvQs&list=PLmU-PUWFq0ne9XsdLLmnfjiz93MfIkh-Z&index=12" class="card-title hover-2">
+                      Best nutrition to take while learning martial arts.
+                    </a>
+                  </h3>
+
+                 
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="./assets/images/image-3.jpg" width="100%"  loading="lazy"
+                  class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#Martial Arts</a>
+
+                      <a href="#" class="span hover-2">#Range</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">8 mins</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="https://www.youtube.com/watch?v=Jb9CS6zMZRc&list=PLsBDq0lkup42eTQIOHYZfbhFQmF3krgv8&index=1" class="card-title hover-2">
+                      5 Ranges of Martial Arts
+                    </a>
+                  </h3>
+
+               
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="./assets/images/image-4.webp" width="100%" loading="lazy"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#Martial Arts</a>
+
+                      <a href="#" class="span hover-2">#Schooling</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">7 mins</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="https://www.youtube.com/watch?v=8WHHXrJxXVg&list=PLsBDq0lkup42eTQIOHYZfbhFQmF3krgv8&index=14" class="card-title hover-2">
+                      How to pick a good martial arts school
+                    </a>
+                  </h3>
+
+                
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="./assets/images/image-5.jpeg" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#Martial Arts</a>
+
+                      <a href="#" class="span hover-2">#Self defense</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">7 mins</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="https://www.youtube.com/watch?v=5H5xnq2cQ1M&list=PLsBDq0lkup42eTQIOHYZfbhFQmF3krgv8&index=18" class="card-title hover-2">
+                      How to survive a curb stomping
+                    </a>
+                  </h3>
+
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <a href="https://www.youtube.com/playlist?list=PLsBDq0lkup42eTQIOHYZfbhFQmF3krgv8" class="btn btn-secondary">
+            <span class="span">Show More Videos</span>
+
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+
+        </div>
+
+        <img src="./assets/images/shadow-3.svg" width="500" height="1500" loading="lazy" alt="" class="feature-bg">
+
+      </section>
+
+
+
+
+
+      <!-- 
+        - #POPULAR TAGS
+      -->
+
+      <section class="tags" aria-labelledby="tag-label">
+        <div class="container">
+
+          <h2 class="headline headline-2 section-title" id="tag-label">
+            <span class="span">Techniques</span>
+          </h2>
+
+          <p class="section-text">
+            Most popular techniques
+          </p>
+
+          <ul class="grid-list">
+
+            <li>
+              <a href="page_muay_thai.html">
+              <button class="card tag-btn">
+                <img src="./assets/images/tag1.png" width="32" height="32" loading="lazy" alt="Travel">
+
+                <p class="btn-text">Muay Thai</p>
+              </button>
+            </a>
+            </li>
+
+            <li>
+              <a href="page_taekwondo.html">
+              <button class="card tag-btn">
+                <img src="./assets/images/tag2.png" width="32" height="32" loading="lazy" alt="Culture">
+
+                <p class="btn-text">Taekwondo</p>
+              </button>
+            </a>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag3.png" width="32" height="32" loading="lazy" alt="Lifestyle">
+
+                <p class="btn-text">Tai Chi</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag4.png" width="32" height="32" loading="lazy" alt="Fashion">
+
+                <p class="btn-text">Kickboxing</p>
+              </button>
+            </li>
+
+            <li>
+              <a href="page_karate.html">
+              <button class="card tag-btn">
+                <img src="./assets/images/tag5.png" width="32" height="32" loading="lazy" alt="Food">
+
+                <p class="btn-text">Karate</p>
+              </button>
+            </a>
+            </li>
+
+            <li>
+              <a href="page_kung_fu.html">
+              <button class="card tag-btn">
+                <img src="./assets/images/tag6.png" width="32" height="32" loading="lazy" alt="Space">
+
+                <p class="btn-text">Kung Fu</p>
+              </button>
+            </a>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag7.png" width="32" height="32" loading="lazy" alt="Animal">
+
+                <p class="btn-text">Aikido</p>
+              </button>
+            </li>
+
+            <li>
+              <a href="page_judo.html">
+              <button class="card tag-btn">
+                <img src="./assets/images/tag8.png" width="32" height="32" loading="lazy" alt="Minimal">
+
+                <p class="btn-text">Judo</p>
+              </button>
+            </a>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag9.png" width="32" height="32" loading="lazy" alt="Interior">
+
+                <p class="btn-text">Krav Maga</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag10.png" width="32" height="32" loading="lazy" alt="Plant">
+
+                <p class="btn-text">Jiu-Jutsu</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag11.png" width="32" height="32" loading="lazy" alt="Nature">
+
+                <p class="btn-text">Jeet Kun Do</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="./assets/images/tag12.png" width="32" height="32" loading="lazy" alt="Business">
+
+                <p class="btn-text">Hapkido</p>
+              </button>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #RECENT POST
+      -->
+
+      <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+        <div class="container">
+
+          <div class="post-main">
+
+            <h2 class="headline headline-2 section-title">
+              <span class="span">Why learn Martial arts ?</span>
+            </h2>
+
+            <p class="section-text" style="color: black;">
+              If you're considering martial arts either for yourself or your child, it's a great choice! There are so many benefits to both your physical and mental health. But it can be tough to commit to something new. Here are 10 reasons you should learn martial arts.<br><br><br>
+
+              <span class="span">Boosted Self-Confidence:</span> Martial arts instill confidence in practitioners of all ages. Mastering new skills enhances self-esteem, fostering a belief in one's ability to excel in various aspects of life.<br><br>
+
+              <span class="span">Total Body Conditioning:</span> Looking for a dynamic workout? Look no further than martial arts! From enhancing mobility to building muscle and burning fat, martial arts offer a comprehensive fitness regimen.<br><br>
+
+              <span class="span">Enhanced Flexibility:</span> Experience the health benefits of improved flexibility, including better posture, increased range of motion, reduced muscle tension, and enhanced relaxation.<br><br>
+
+              <span class="span">Improved Coordination:</span> Martial arts develop spatial awareness and coordination through precise movements and interaction with partners and props, facilitating better control of one's body and surroundings.<br><br>
+
+              <span class="span">Self-Defense Proficiency:</span> Learn invaluable self-defense skills to protect yourself and your loved ones in potentially threatening situations, empowering you to navigate the world with confidence.<br><br>
+
+              <span class="span">Heart Health and Stress Reduction:</span> Martial arts training, akin to high-intensity interval training (HIIT), improves cardiovascular health, lowers blood pressure, and reduces stress levels, promoting overall well-being.<br><br>
+
+              <span class="span">Mental Sharpness:</span> Engage in aerobic exercise like martial arts to stimulate brain function, enhance memory, and reduce the risk of cognitive decline, contributing to a sharper mind and healthier aging.<br><br>
+
+              <span class="span">Social Connection:</span> Martial arts foster camaraderie and teamwork, providing opportunities to develop social skills, forge friendships, and learn conflict resolution in a supportive environment.<br><br>
+
+              <span class="span">Cultivation of Discipline:</span> Embrace structure and focus in martial arts classes, honing self-discipline and perseverance, essential qualities for achieving personal and professional goals.<br><br>
+
+              <span class="span">Stress Relief:</span> Harness the power of martial arts to alleviate stress by cultivating mindfulness, controlling breathing, and sharpening mental focus, leading to a more balanced and fulfilling life.<br><br>
+
+              Embark on a rewarding journey of self-improvement and discovery through martial arts—a holistic pursuit offering physical fitness, mental resilience, and a vibrant community for individuals worldwide.<br><br>
+            </p>
+
+          </div>
+
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer>
+    <div class="container">
+
+      
+          <p class="copyright">
+            &copy; Developed by <a href="#" class="copyright-link">Abhishek.</a>
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="logo">
+                <img src="./assets/images/ZenDojo.png" width="119" height="37" loading="lazy">
+              </a>
+            </li>
+
+           
+
+          </ul>
+
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

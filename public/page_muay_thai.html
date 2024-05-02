@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracking - Muay Thai</title>
+
+
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"crossorigin="anonymous"></script>
+
+    
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        body{
+            background-color: var(--bg-oxford-blue);
+        }
+        .header{
+            border-bottom: 2px solid black;
+            height: 90px;
+        }
+        .header2 {
+            padding: 20px;
+            text-align: center; 
+            margin-top: 125px;
+        }
+        
+        .progress-bar-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background-color: var(--bg-oxford-blue);
+            border-radius: 5px;
+            height: 20px;
+            position: relative;
+        }
+
+        .progress {
+            background-color: var(--bg-carolina-blue);
+            border-radius: 5px;
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-bar span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #000;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .workout-list {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .workout-item {
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .workout-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .workout-info {
+    display: block; /* Change display to block */
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out, margin 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+.workout-info.active {
+    padding: 10px;
+    margin-top: 5px;
+    display: block;
+    max-height: 500px; /* Set the max-height to your desired value */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out,  margin 0.5s ease-in-out, padding 0.5s ease-in-out ;
+}
+
+
+        .tips-section {
+            width: 30%;
+            padding: 20px;
+            margin: 20px;
+            position: sticky;
+            top: 125px; /* Adjust this value based on your header height */
+            z-index: 1; /* Ensure the tips section stays above other elements */
+            margin-top: 20px; /* Adjust margin to keep space between header and tips */
+            max-height: calc(100vh - 165px); /* Adjust max-height to fit between header and other div */
+            overflow-y: auto;
+            border: 1px solid black;
+            border-radius: 18px;
+            color: #000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .specific-tips {
+            margin-top: 20px;
+        }
+
+        .specific-tips h3 {
+            margin-bottom: 10px;
+        }
+
+        .levels{
+            margin: 20px;
+            background-image: var(--gradient-1);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            width: 150px;
+        }
+        #main-text{
+            justify-content: justify;
+            color: #000;
+        }
+
+        .tips-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-text {
+    width: 70%; /* Adjust as needed */
+    text-align: justify;
+    padding: 5px;
+}
+
+.side-image {
+    width: 30%; /* Adjust as needed */
+    text-align: right; /* Align the image to the right */
+}
+
+.side-image img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+}
+.workout-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-and-title {
+    display: flex;
+    align-items: center;
+}
+
+.image-and-title img {
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.description p {
+    margin-left: 0; /* Reset default margin */
+
+}
+
+.workout-checkbox {
+    /* Adjust margin or other styles as needed */
+    width: 5%;
+
+}
+
+.checkbox-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--bg-oxford-blue);
+    border-radius: 3px;
+}
+
+.workout-checkbox {
+    visibility: hidden;
+}
+
+.workout-checkbox:checked + .custom-checkbox:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: block;
+}
+
+.workout-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text {
+    width: 70%;
+}
+
+.image {
+    width: 30%;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.button {
+    flex: 1;
+    margin: 0 5px;
+}
+.info-images{
+    border-radius: 8px;
+}
+
+        
+    </style>
+</head>
+<body>
+
+    <header class="header" data-header>
+        <div class="container">
+    
+          <a href="index.html" class="logo">
+            <img src="./assets/images/ZenDojo.png" width="119" height="37" alt="Wren logo">
+          </a>
+    
+          <nav class="navbar" data-navbar>
+    
+            <div class="navbar-top">
+              <a href="#" class="logo">
+                <img src="./assets/images/ZenDojo.png" width="119" height="37" alt="Wren logo">
+              </a>
+    
+              <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+              </button>
+            </div>
+    
+            <ul class="navbar-list">
+    
+              <li>
+                <a href="index.html" class="navbar-link hover-1" data-nav-toggler>Home</a>
+              </li>
+    
+              <li>
+                <a href="index.html" class="navbar-link hover-1" data-nav-toggler>Why Learn ?</a>
+              </li>
+    
+              <li>
+                <a href="index.html" class="navbar-link hover-1" data-nav-toggler>Videos</a>
+              </li>
+    
+              <li>
+                <a href="index.html" class="navbar-link hover-1" data-nav-toggler>Most Popular</a>
+              </li>
+    
+            
+    
+            </ul>
+    
+      
+    
+            <p class="copyright-text">
+              Copyright 2024 © ZenDojo - Martial Arts Website.
+              Developed by Abhishek
+            </p>
+    
+          </nav>
+    
+          <!-- <a href="#" class="btn btn-primary">Register</a> -->
+    
+          <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+    
+        </div>
+      </header>
+
+    <div class="header2">
+        <h1 class="headline headline-1 section-title">
+            <span class="span">Muay Thai</span>
+          </h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress" style="width: 0;"></div>
+                <span class="progress-text">0%</span>
+            </div>
+            <p id="main-text">Muay Thai, sometimes referred to as Thai boxing, is a Thai martial art and full-contact combat sport that uses stand-up striking, sweeps, and various clinching techniques. This discipline is known as the "Art of eight limbs", as it is characterised by the combined use of fists, elbows, knees and shins. Muay Thai became widespread internationally in the late 20th to 21st century, when Westernised practitioners from Thailand began competing in kickboxing and mixed-rules matches as well as matches under Muay Thai rules around the world.</p>
+            
+        </div>
+    </div>
+    <main>
+        <section class="workout-list">
+            <h2 class="levels">Introduction</h2>
+            <div class="workout-item" data-workout="Muay Thai Stance">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Stance</h3>
+                        </div>
+                        <div class="description">
+                            <p>The essential foundational stance of Muay Thai training.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <div class="info-top">
+                        <div class="text">
+                            <p>To adopt a Muay Thai stance, start by positioning your feet shoulder-width apart. Angle your lead foot slightly outward and your back foot about 45 degrees inward. Bend your knees slightly, distributing your weight evenly. Raise your hands to chin level with elbows tucked in, fists clenched but relaxed. Keep your chin down and eyes on your opponent. Maintain relaxed shoulders and engage your hips slightly forward for power. Keep your lead leg ready to check kicks by lifting the knee when needed. Practice moving forward, backward, and laterally while maintaining the stance. Consistent practice through shadowboxing, drills, and sparring is crucial for mastering the stance and making it second nature. With time and practice, you'll adjust the stance to suit your fighting style and preferences.</p>
+                        </div>
+                        <div class="image">
+                            <img src="./assets/images/muay_thai_stance.jpg" alt="muay thai stance" width="200px" class="info-images">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn btn-primary easy-btn">Easy</button>
+                        <button class="btn btn-primary medium-btn">Medium</button>
+                        <button class="btn btn-primary hard-btn">Hard</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="workout-item" data-workout="Foot Work">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Footwork</h3>
+                        </div>
+                        <div class="description">
+                            <p>The fundamentals of how to move your feet.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <div class="info-top">
+                        <div class="text">
+                            <p>Muay Thai footwork is multifaceted, enabling fighters to maneuver effectively in attack and defense. It involves shifting weight to create angles, executing push kicks (teeps) for distance control, and circling to find openings. Lateral movement aids evasion and counters, while retreating maintains space and resets engagements. Skillful footwork closes distance with controlled steps, often using feints. Angles are crucial, achieved by pivoting on the lead foot. Balance is paramount, ensuring stability and readiness. Regular drills enhance agility, speed, and coordination. Shadowboxing and partner exercises refine techniques. Mastery of Muay Thai footwork allows fighters to navigate the ring strategically, exploiting opportunities while minimizing vulnerabilities.</p>
+                        </div>
+                        <div class="image">
+                            <img src="./assets/images/muay_thai_footwork.jpeg" alt="muay thai stance" width="200px" class="info-images">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn btn-primary easy-btn">Easy</button>
+                        <button class="btn btn-primary medium-btn">Medium</button>
+                        <button class="btn btn-primary hard-btn">Hard</button>
+                    </div>
+                </div>
+            </div><div class="workout-item" data-workout="Jab">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Jab</h3>
+                        </div>
+                        <div class="description">
+                            <p>Lead punch technique: The Jab.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <div class="info-top">
+                        <div class="text">
+                            <p>The Muay Thai jab, a cornerstone of striking, involves extending the lead hand straight out while maintaining a tight guard. It's versatile, serving to measure distance, disrupt opponents, and set up combinations. Executed with proper form, the jab can keep opponents at bay and probe for openings in their defense. Variations include the stiff jab, adding power by driving the shoulder and hip forward, and the flicker jab, a quick, snapping motion to maintain distance and off-balance opponents. Retracting the jab swiftly after extension is crucial for defense. Feints with the jab can bait reactions, creating opportunities for follow-up strikes. Coordination with footwork maximizes reach and power. Timing is key; using the jab to disrupt opponents' rhythm and capitalize on openings demands precision. Regular practice through shadowboxing, pad work, and sparring drills refines technique and timing, enhancing its effectiveness in combat.</p>
+                        </div>
+                        <div class="image">
+                            <img src="./assets/images/muay_thai_jab.jpg" alt="muay thai stance" width="200px" class="info-images">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn btn-primary easy-btn">Easy</button>
+                        <button class="btn btn-primary medium-btn">Medium</button>
+                        <button class="btn btn-primary hard-btn">Hard</button>
+                    </div>
+                </div>
+            </div><div class="workout-item" data-workout="Cross">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Cross</h3>
+                        </div>
+                        <div class="description">
+                            <p>Rear punch technique: The Cross.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Front Teep">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Front Teep</h3>
+                        </div>
+                        <div class="description">
+                            <p>Lead push kick: Front Teep.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Rear Teep">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Rear Teep</h3>
+                        </div>
+                        <div class="description">
+                            <p>Rear push kick: Rear Teep.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Handwraps">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Handwraps</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to wrap your hands.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <!-- Level 1 -->
+            <h2 class="levels">Level 1</h2>
+
+            <div class="workout-item" data-workout="Slips">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Slips</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to dodge punches with head movement.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Block: Straights">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Block: Straights</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to block straight punches.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Parry Teeps">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Parry Teeps</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to parry or divert Teep kicks.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Side Step Teeps">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Side Step Teeps</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to avoid and side step Teeps.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+           
+
+            <!-- Level 2 -->
+            <h2 class="levels">Level 2</h2>
+
+            <div class="workout-item" data-workout="Muay Thai Long Guard">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Long Guard</h3>
+                        </div>
+                        <div class="description">
+                            <p>A variation of a Muay Thai stance using your lead hand extended.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Hook Punch">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Hook Punch</h3>
+                        </div>
+                        <div class="description">
+                            <p>Round punch: the Hook.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Uppercut Punch">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Uppercut Punch</h3>
+                        </div>
+                        <div class="description">
+                            <p>Round punch: the Uppercut.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Roundhouse Kick (Body)">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Roundhouse Kick (Body)</h3>
+                        </div>
+                        <div class="description">
+                            <p>Roundhouse kick to the body.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+
+
+            <!-- Level 3 -->
+            <h2 class="levels">Level 3</h2>
+
+            <div class="workout-item" data-workout="Bladed Stance">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Bladed Stance</h3>
+                        </div>
+                        <div class="description">
+                            <p>Learn how to use the "Bladed" stance.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Muay Thai Plum">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Plum</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute the Muay Thai Plum clinch.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="How to Engage and Escape the Plum.">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>How to Engage and Escape the Plum.</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to Engage and Escape the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Knee Strikes from the Plum. ">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Knee Strikes from the Plum. </h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute Knee Strikes from the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+
+            <!-- Level 4 -->
+            <h2 class="levels">Level 4</h2>
+
+            <div class="workout-item" data-workout="Bladed Stance">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Bladed Stance</h3>
+                        </div>
+                        <div class="description">
+                            <p>Learn how to use the "Bladed" stance.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Muay Thai Plum">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Plum</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute the Muay Thai Plum clinch.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="How to Engage and Escape the Plum.">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>How to Engage and Escape the Plum.</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to Engage and Escape the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Knee Strikes from the Plum. ">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Knee Strikes from the Plum. </h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute Knee Strikes from the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+
+            <!-- Level 5 -->
+            <h2 class="levels">Level 5</h2>
+
+            <div class="workout-item" data-workout="Bladed Stance">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Bladed Stance</h3>
+                        </div>
+                        <div class="description">
+                            <p>Learn how to use the "Bladed" stance.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Muay Thai Plum">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Plum</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute the Muay Thai Plum clinch.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="How to Engage and Escape the Plum.">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>How to Engage and Escape the Plum.</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to Engage and Escape the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Knee Strikes from the Plum. ">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Knee Strikes from the Plum. </h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute Knee Strikes from the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+
+            <!-- Level 6 -->
+            <h2 class="levels">Level 6</h2>
+
+            <div class="workout-item" data-workout="Bladed Stance">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Bladed Stance</h3>
+                        </div>
+                        <div class="description">
+                            <p>Learn how to use the "Bladed" stance.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+            <div class="workout-item" data-workout="Muay Thai Plum">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Muay Thai Plum</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute the Muay Thai Plum clinch.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="How to Engage and Escape the Plum.">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>How to Engage and Escape the Plum.</h3>
+                        </div>
+                        <div class="description">
+                            <p>How to Engage and Escape the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div><div class="workout-item" data-workout="Knee Strikes from the Plum. ">
+                <div class="workout-bar">
+                    <div class="left-content">
+                        <div class="image-and-title">
+                            <img src="./assets/images/muay_thai_dots.png" alt="muay thai bullets" width="40px">
+                            <h3>Knee Strikes from the Plum. </h3>
+                        </div>
+                        <div class="description">
+                            <p>How to execute Knee Strikes from the Plum.</p>
+                        </div>
+                    </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="workout-checkbox">
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+                <div class="workout-info">
+                    <p>Some information about the Jab workout...</p>
+                    <button class="btn btn-primary easy-btn">Easy</button>
+                    <button class="btn btn-primary medium-btn">Medium</button>
+                    <button class="btn btn-primary hard-btn">Hard</button>
+                </div>
+            </div>
+
+            
+            
+            
+
+        </section>
+        <section class="tips-section">
+            <h2 style="padding: 5px;">Muay Thai Tips</h2>
+            <div class="tips-content">
+                <div class="side-text">
+                    <p id="side-text">Prioritize technique over power, conditioning for endurance, and strength. Balance offensive moves with defense, minimizing damage and creating openings. Emphasize balance and footwork for stability and agility in the ring, crucial for effective Muay Thai performance and reducing vulnerability.</p>
+                </div>
+                <div class="side-image">
+                    <img id="side-image" src="./assets/images/muay_thai_side.png" alt="muay thai" width="100px">
+
+                </div>
+            </div>
+            <div class="specific-tips">
+                <h3 id="specific-tips-text"></h3>
+                <p >...</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const workoutItems = document.querySelectorAll('.workout-item');
+    const progressBar = document.querySelector('.progress');
+    const progressText = document.querySelector('.progress-text');
+    const specificTipsText = document.getElementById('specific-tips-text');
+
+    workoutItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const info = this.querySelector('.workout-info');
+            info.classList.toggle('active');
+            const workout = this.getAttribute('data-workout');
+            updateSpecificTips(workout);
+            updateProgress();
+        });
+
+        const easyBtn = item.querySelector('.easy-btn');
+        const mediumBtn = item.querySelector('.medium-btn');
+        const hardBtn = item.querySelector('.hard-btn');
+
+        easyBtn.addEventListener('click', function () {
+            this.closest('.workout-item').querySelector('.workout-checkbox').checked = true;
+            updateProgress();
+        });
+
+        mediumBtn.addEventListener('click', function () {
+            this.closest('.workout-item').querySelector('.workout-checkbox').checked = true;
+            updateProgress();
+        });
+
+        hardBtn.addEventListener('click', function () {
+            this.closest('.workout-item').querySelector('.workout-checkbox').checked = true;
+            updateProgress();
+        });
+    });
+
+    function updateProgress() {
+        const checkedCount = document.querySelectorAll('.workout-checkbox:checked').length;
+        const totalCount = document.querySelectorAll('.workout-checkbox').length;
+        const percentage = (checkedCount / totalCount) * 100;
+        progressBar.style.width = percentage + '%';
+        progressText.textContent = Math.round(percentage) + '%';
+    }
+
+    function updateSpecificTips(workout) {
+        specificTipsText.textContent = `For ${workout}`;
+    }
+});
+
+    </script>
+</body>
+</html>
